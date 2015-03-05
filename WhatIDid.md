@@ -1,0 +1,2 @@
+- Read the Slides and Sigma Integration Papers.
+- Read paper "Using the TPTP Language for Writing Derivations and Finite Interpretations"
