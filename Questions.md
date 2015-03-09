@@ -4,3 +4,4 @@
 - File naming conventions ?
 - stdin/stdout too or only TCP ?
 - The Batch file is removed in the repo ?
+- Accept many connections at the same time ? One Connection only ?
