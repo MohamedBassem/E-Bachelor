@@ -5,3 +5,5 @@
 - stdin/stdout too or only TCP ?
 - The Batch file is removed in the repo ?
 - Accept many connections at the same time ? One Connection only ?
+- The e_ltb_runner can contain includes, should this includes be sent to the server as files or as a content ?
+- Vim ?
