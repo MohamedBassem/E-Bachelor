@@ -7,3 +7,4 @@
 - Accept many connections at the same time ? One Connection only ?
 - The e_ltb_runner can contain includes, should this includes be sent to the server as files or as a content ?
 - Vim ?
+- Socket write, should I write to a tmp file and then read and send file or modify the code to write to sockets ?
