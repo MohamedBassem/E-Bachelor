@@ -3,3 +3,4 @@
 - gcc-fsf-4.9 -> gcc in Makefile.variables ?
 - File naming conventions ?
 - stdin/stdout too or only TCP ?
+- The Batch file is removed in the repo ?
