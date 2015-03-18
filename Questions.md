@@ -1,3 +1,7 @@
+### 19/3/2015 Meeting
+- Proper socket cleanup?
+- Code review?
+
 ### 12/3/2015 Meeting
 - How do you manage the repo's .gitignore ?
 - gcc-fsf-4.9 -> gcc in Makefile.variables ?
