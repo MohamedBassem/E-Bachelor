@@ -1,3 +1,6 @@
+### 19/3/2015 Meeting
+- Finished a configurable fully working prototype. ( Two weeks of work )
+
 ### 12/3/2015 Meeting
 - Read the Slides and Sigma Integration Papers.
 - Read paper "Using the TPTP Language for Writing Derivations and Finite Interpretations"
