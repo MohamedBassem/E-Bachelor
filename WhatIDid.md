@@ -1,5 +1,6 @@
 ### 19/3/2015 Meeting
 - Finished a configurable fully working prototype. ( Two weeks of work )
+- Wrote a python client - netcat like - to commute with the server.
 
 ### 12/3/2015 Meeting
 - Read the Slides and Sigma Integration Papers.
