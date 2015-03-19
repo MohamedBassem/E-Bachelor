@@ -1,6 +1,7 @@
 ### 19/3/2015 Meeting
 - Proper socket cleanup?
 - Code review?
+- Python client recv function ?
 
 ### 12/3/2015 Meeting
 - How do you manage the repo's .gitignore ?
