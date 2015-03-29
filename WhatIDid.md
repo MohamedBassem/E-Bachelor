@@ -1,3 +1,7 @@
+### 31/3/2015 Meeting
+- Wrote the first draft for the communication protocol.
+
+
 ### 19/3/2015 Meeting
 - Finished a configurable fully working prototype. ( Two weeks of work )
 - Wrote a python client - netcat like - to commute with the server.
