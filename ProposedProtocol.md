@@ -4,9 +4,11 @@
 
 - STAGE *AXIOM_SET*
   - Success
+
     Test
 
   - Failure
+
     Test
 
 - UNSTAGE *AXIOM_SET*
