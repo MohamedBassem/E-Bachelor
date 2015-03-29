@@ -1,43 +1,95 @@
-# Proposed Protocol 
+# Proposed Protocol
 
-## Commands
+### Commands
 
 - STAGE *AXIOM_SET*
   - Success
-    - Test
+    - Responds with : `XXX ok : staged`
+    - Stages an in-memory axiom set for the current user session.
   - Failure
-    - Test
+    - If the axiom set is not defined : `XXX Err : Unknown axiom set`.
 
 - UNSTAGE *AXIOM_SET*
   - Success
-    - Test
+    - Responds with : `XXX ok : unstaged`.
+    - Unstages an in-memory axiom set.
   - Failure
-    - Test
+    - If the axiom set is not defined : `XXX Err : Unknown axiom set`.
+
+- REMOVE *AXIOM_SET*
+  - Success
+    - Responds with : `XXX ok : removed`.
+    - Removes the axiom set from memory.
+  - Failure
+    - If the axiom set is not defined : `XXX Err : Unknown axiom set`.
+
+
+- DOWNLOAD *AXIOM_SET* (TO *ABSOLUTE_PATH*)
+  - Success
+    - Downloads `AXIOM_SET` to `ABSOLUTE_PATH` ( or stdout if no path is given ) and then responds with : `XXX ok : downloaded`
+    - Removes the axiom set from memory.
+  - Failure
+    - If the axiom set is not defined : `XXX Err : Unknown axiom set`.
+    - If the path is not absolute : `XXX Err : Relative path given.`.
 
 - UPLOAD *ABSOLUTE_PATH* (AS *AXIOM_SET*)
   - Success
-    - Test
+    - Shows a progress bar for the upload process.
+    - Responds with : `XXX ok : uploaded`.
+    - Uploads the axiom set with this absolute path to the server. The axiom set uploaded is not staged.
+    - If the AS parameter is given the axiom sets get named with this name, otherwise the file name is used.
   - Failure
-    - Test
+    - If the axiom set file is not accessible ( Ex. File not found or Permission Error ) : `XXX Err : Axiom set not found or not accessible`.
+    - If the axiom set name already exists : `XXX Err : Axiom set name already exists.`
+    - If the axiom file given contains syntax errors : `XXX Err : Syntax error`.
+    - If the path is not absolute : `XXX Err : Relative path given.`.
+
+- ADD *AXIOM_SET_NAME* ... GO
+  - Success
+    - Responds with : `XXX ok : succeeded` on job success.
+    - Same as `UPLOAD` but axioms are read from client instead of file.
+    - `ADD *AXIOM_SET_NAME*` and `GO` both should be on a separate lines with zero or more lines between them.
+  - Failure
+    - If the axiom set name already exists : `XXX Err : Axiom set name already exists.`
+    - If the axiom file given contains syntax errors : `XXX Err : Syntax error`.
+
+- RUN (*JOB_NAME*) ... GO
+  - Success
+    - Prints the job's output and then responds with : `XXX ok : succeeded`.
+    - Runs the job given.
+    - If a name wasn't given, unnamed is used instead.
+    - Axioms and theories added are only for the scope of this job.
+    - `RUN (*JOB_NAME*)` and `GO` both should be on a separate lines with zero or more lines between them.
+  - Failure
+    - If the job given contains syntax errors : `XXX Err : Syntax error`.
 
 - LIST
   - Success
-    - Test
+    - Lists the in-memory axiom sets in the format `<Axiom Set Name> (Staged|Unstaged)` or with `No axiom sets in memory.` each on a seprate line and then responds with responds with : `XXX ok : listed`.
   - Failure
-    - Test
+    - Cannot Fail.
 
 - HELP
   - Success
-    - Test
+    - Prints a help message and then responds with : `XXX ok`.
   - Failure
-    - Test
+    - Cannot Fail.
 
 - QUIT
   - Success
-    - Test
+    - Responds with : `XXX ok : Bye.`
+    - The client get disconnected and the user's session gets cleaned.
   - Failure
-    - Test
+    - Cannot Fail.
 
+- *UNKNOWN_COMMAND*
+  - Responds with : `XXX Err : Unknown command`
 
-## Notes
-- Reliability is insured by TCP.
+### Success Codes
+WIP
+
+### Error Codes
+WIP
+
+### Notes
+- Transfer reliability is insured by TCP.
