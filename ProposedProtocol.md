@@ -31,6 +31,7 @@
   - Failure
     - If the axiom set is not defined : `XXX Err : Unknown axiom set`.
     - If the path is not absolute : `XXX Err : Relative path given.`.
+    - If there's permission errors in writing files in `ABSOLUTE_PATH` : `XXX Err : Cannot write file in specified path.`.
 
 - UPLOAD *ABSOLUTE_PATH* (AS *AXIOM_SET*)
   - Success
