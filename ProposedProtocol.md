@@ -32,6 +32,8 @@
     - If the axiom set is not defined : `XXX Err : Unknown axiom set`.
     - If the path is not absolute : `XXX Err : Relative path given.`.
     - If there's permission errors in writing files in `ABSOLUTE_PATH` : `XXX Err : Cannot write file in specified path.`.
+  - **Notes**
+    - The server doesn't understand the TO part. The server always writes to the connection and it's the client responsibility to handle output redirection and to remove the TO part before sending the command to the server.
 
 - UPLOAD *ABSOLUTE_PATH* (AS *AXIOM_SET*)
   - Success
@@ -41,9 +43,10 @@
     - If the AS parameter is given the axiom sets get named with this name, otherwise the file name is used.
   - Failure
     - If the axiom set file is not accessible ( Ex. File not found or Permission Error ) : `XXX Err : Axiom set not found or not accessible`.
-    - If the axiom set name already exists : `XXX Err : Axiom set name already exists.`
-    - If the axiom file given contains syntax errors : `XXX Err : Syntax error`.
     - If the path is not absolute : `XXX Err : Relative path given.`.
+    - `ADD` Command errors. Check the notes below.
+  - **Notes**
+    - The server doesn't understand this command. It's the client responsibility to convert this into an `ADD` command.
 
 - ADD *AXIOM_SET_NAME* ... GO
   - Success
