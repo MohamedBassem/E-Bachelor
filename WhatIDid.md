@@ -1,6 +1,7 @@
 ### 31/3/2015 Meeting
 - Wrote the first draft for the communication protocol.
 - Digged into the code understanding how {Strings, Scanner, BatchSpec} works.
+- Wrote a proof of concept parser for the protocol.
 
 
 ### 19/3/2015 Meeting
