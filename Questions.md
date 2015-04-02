@@ -1,3 +1,7 @@
+### 2/4/2015 Meeting
+- The f_distrib thing? Any thing to read more about?
+- Backtracking to the original clauses and formulas.
+
 ### 19/3/2015 Meeting
 - Proper socket cleanup?
 - Code review?
