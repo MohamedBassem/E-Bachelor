@@ -1,3 +1,6 @@
+### 9/4/2015 Meeting
+- Read the TPI paper.
+
 ### 31/3/2015 Meeting
 - Wrote the first draft for the communication protocol.
 - Digged into the code understanding how {Strings, Scanner, BatchSpec} works.
