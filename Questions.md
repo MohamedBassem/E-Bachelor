@@ -1,6 +1,7 @@
 ### 9/4/2015 Meeting
 - TPI compatibility ?
 - Splitting the deduction server completely from e_ltb_runner.
+- Staging and unstaging, The easy way ( Keeping axiom sets in files and re-parsing staged sets with every change since parsing axioms is in linear time ) or the hard way ( Playing with axioms in memory )?
 
 ### 2/4/2015 Meeting
 - The f_distrib thing? Any thing to read more about?
