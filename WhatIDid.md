@@ -1,5 +1,6 @@
 ### 9/4/2015 Meeting
 - Read the TPI paper.
+- Read the SInE paper.
 
 ### 31/3/2015 Meeting
 - Wrote the first draft for the communication protocol.
