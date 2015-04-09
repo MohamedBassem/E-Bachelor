@@ -1,3 +1,7 @@
+### 9/4/2015 Meeting
+- TPI compatibility ?
+- Splitting the deduction server completely from e_ltb_runner.
+
 ### 2/4/2015 Meeting
 - The f_distrib thing? Any thing to read more about?
 - Backtracking to the original clauses and formulas.
