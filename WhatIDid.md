@@ -1,7 +1,7 @@
 ### 9/4/2015 Meeting
 - Read the TPI paper.
 - Read the SInE paper.
-- Run command in the protocol is now implemented.
+- Run/Stage/Add command in the protocol is now implemented.
 
 ### 31/3/2015 Meeting
 - Wrote the first draft for the communication protocol.
