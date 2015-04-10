@@ -22,6 +22,7 @@
     - Removes the axiom set from memory.
   - Failure
     - If the axiom set is not defined : `XXX Err : Unknown axiom set`.
+    - If the axiom is staged : `XXX Err : Axiom is staged, please unstage it first`.
 
 
 - DOWNLOAD *AXIOM_SET* (TO *ABSOLUTE_PATH*)
@@ -69,7 +70,7 @@
 
 - LIST
   - Success
-    - Lists the in-memory axiom sets in the format `<Axiom Set Name> (Staged|Unstaged)` or with `No axiom sets in memory.` each on a seprate line and then responds with responds with : `XXX ok : listed`.
+    - Lists the in-memory axiom sets in the format `Staged : … \nUnstaged : … \n` or with `No axiom sets in memory.` each on a seprate line and then responds with responds with : `XXX ok : listed`.
   - Failure
     - Cannot Fail.
 
