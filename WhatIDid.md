@@ -1,6 +1,7 @@
 ### 16/4/2015 Meeting
 - DONE IMPLEMENTING THE PROTOCOL.
 - Separated the deduction server from the e_ltb_runner.
+- Server now supports multiple clients.
 
 ### 9/4/2015 Meeting
 - Read the TPI paper.
