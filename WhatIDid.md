@@ -3,6 +3,7 @@
 - Separated the deduction server from the e_ltb_runner.
 - Server now supports multiple clients.
 - Preparing the presentation.
+- Touching the latex file of the thesis.
 
 ### 9/4/2015 Meeting
 - Read the TPI paper.
