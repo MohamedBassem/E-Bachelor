@@ -1,3 +1,5 @@
 - Handle different line endings.
 - Fixing the reuse port thing. ( DONE )
 - Fix make warning.
+- Implementing file loading.
+- Finding a solution to the includes.
