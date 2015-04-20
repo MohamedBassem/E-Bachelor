@@ -1,3 +1,6 @@
+### 20/4/2015 Meeting
+- Adding Readline support to python client
+
 ### 16/4/2015 Meeting
 - DONE IMPLEMENTING THE PROTOCOL.
 - Separated the deduction server from the e_ltb_runner.
