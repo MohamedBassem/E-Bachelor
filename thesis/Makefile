@@ -5,5 +5,13 @@ pdf:
 		pdflatex bachelor.tex
 
 clean:
-		rm -f *.aux *.bbl *.blg *.log *.toc *.out *.lof bachelor.pdf
+		find . -maxdepth 2 -name *.log -exec rm {} \;
+		find . -maxdepth 2 -name *.aux -exec rm {} \;
+		find . -maxdepth 2 -name *.toc -exec rm {} \;
+		find . -maxdepth 2 -name *.lof -exec rm {} \;
+		find . -maxdepth 2 -name *.lot -exec rm {} \;
+		find . -maxdepth 2 -name *.out -exec rm {} \;
+		find . -maxdepth 2 -name *.bbl -exec rm {} \;
+		find . -maxdepth 2 -name *.blg -exec rm {} \;
+		rm -f bachelor.pdf
 
