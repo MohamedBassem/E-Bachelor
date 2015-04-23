@@ -1,5 +1,7 @@
 ### 20/4/2015 Meeting
-- Adding Readline support to python client
+- Adding Readline support to python client.
+- Playing with the template for writing and prepairing env.
+- Writing the outline.
 
 ### 16/4/2015 Meeting
 - DONE IMPLEMENTING THE PROTOCOL.
