@@ -1,5 +1,5 @@
 ### 20/4/2015 Meeting
-- Adding Readline support to python client.
+- Adding Readline support to python client and graceful connection closure.
 - Playing with the template for writing and prepairing env.
 - Writing the outline.
 
