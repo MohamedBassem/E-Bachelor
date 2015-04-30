@@ -1,5 +1,26 @@
 \chapter{Deduction Server}
-Deduction Server
-  \section{Design}
-  \section{Protocol}
-  \section{Benchmarking}
+A deduction server was proposed to solve the problem discussed in the Introduction. In this chapter we will be talking about the design of the deduction server and the communication between it and the clients and also some benchmarks to measure the performance.
+\section{Design}
+\includefigWSC{0.82}{DeductionServerArch.png}{The Deduction Server Architecture without Axiom Selector}{\cite{deductionServerTalk}}{fig:deductionServerArchWithoutAxiomSelector}
+Figure~\ref{fig:deductionServerArchWithoutAxiomSelector} shows the architecture of the deduction server. The deduction server can load and parse an axiom set in memory and then answer multiple quires against this axiom set.
+
+\includefigWSC{0.82}{DeductionServerArch.png}{The Deduction Server Architecture with Axiom Selector}{\cite{deductionServerTalk}}{fig:deductionServerArchWithAxiomSelector}
+The problem with that is in a huge axiom set like in the case of common sense reasoning, only a small portion of these axioms are considered in the proof. Thus a new component is needed for in the deduction server. An Axiom Selector which takes the conjuncture we need to proof and tries to find the most relevant axioms that are probably going to be used in the proof of this conjuncture. Figure~\ref{fig:deductionServerArchWithAxiomSelector}.
+
+\section{The Protocol}
+\subsection{TCP Communication}\label{subsec:tcpCommunication}
+The communication with the server is done over TCP to insure reliability. Sticking to the protocol new lines are important to the server and each line should be terminated with a new line. Each line should be encoded in a single TCP message to the server in the following format:
+\missingfigure[figwidth=6cm]{A Figure showing the TCP message structure.}
+
+As an example to send the message ``LIST\textbackslash{}n'' the raw TCP message would be:
+\begin{lstlisting}
+  \x00\x00\x00\x09 \x4c\x49\x53\x54\x0a
+\end{lstlisting}
+The first four bytes \lstinline{\x00\x00\x00\x09} encodes the length of the message which is 9 bytes. Then 9--4 bytes follows \lstinline{\x4c\x49\x53\x54\x0a} which are the actual content of the message.
+\subsection{Interaction Protocol}\label{subsec:interactionProtocol}
+The communication protocol will be described with the following example:
+\begin{lstlisting}
+
+\end{lstlisting}
+
+\section{Benchmarking}

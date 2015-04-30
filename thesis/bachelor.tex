@@ -8,6 +8,7 @@
 % \setlength{\headheight}{20pt} 
 % \usepackage{graphics}
 \usepackage{graphicx}
+\usepackage{grffile}
 \usepackage{float}
 \usepackage{subfig}
 \usepackage{array}
@@ -15,6 +16,8 @@
 \usepackage{multirow}
 \usepackage{booktabs}
 \usepackage{appendix}
+\usepackage{listings}
+\usepackage{todonotes}
 \usepackage[pdfborder={0 0 0}, colorlinks=true, linkcolor=black, citecolor=blue]{hyperref}
 \usepackage[printonlyused]{acronym}
 \usepackage{algorithmic}
@@ -36,7 +39,7 @@
 \newcommand{\includefig}[4]{
   \begin{figure}[ht]
     \centering
-    \includegraphics[width=#1\textwidth]{../graphics/#2}
+    \includegraphics[width=#1\textwidth]{graphics/#2}
     \caption{#3}
     \label{#4}
   \end{figure}
@@ -45,7 +48,7 @@
 \newcommand{\includefigWSC}[5]{
   \begin{figure}[ht]
     \centering
-    \includegraphics[width=#1\textwidth]{../graphics/#2}
+    \includegraphics[width=#1\textwidth]{graphics/#2}
     \caption[#3]{#4}
     \label{#5}
   \end{figure}
