@@ -1,6 +1,30 @@
 \chapter{Background}\label{chap:background}
-  Background
 
-  \section{Automated Reasoning}
-  \section{E Theorem Prover}
-  \section{Problem}
+\section{Automated Theorem Proving}
+\section{E Theorem Prover}
+E is a fully automated theorem prover for full first order logic with equality. E's first public release was in 1998. It's implemented in C and works on most UNIX systems. E works by accepting a problem in the form of axioms and a conjuncture that needs to be proved and will try to find a formal proof for the conjuncture assuming the axioms. E can also provide a model that satisfies the problem. For instance, let's consider the following problem:
+\begin{lstlisting}
+% Here we are defining some assumptions that a is a subclass of b and b is a subclass of c.
+fof(inp1,axiom,(subclass(a,b))).
+fof(inp2,axiom,(subclass(b,c))).
+
+% Here we are defining that if some variable X is subclass of another one Y, and this Y is subclass of another Z then X is a subclass of Z.
+fof(inp3,axiom,((subclass(X,Y) & subclass(Y,Z)) => subclass(X,Z))).
+
+% Our conjuncture that we are trying to prove assuming the previous axioms that a is a subclass of c.
+fof(inp4,conjuncture,(subclass(a,c))).
+\end{lstlisting}
+If this problem was given to E, a formal proof will be presented:
+\begin{lstlisting}
+#cnf(i_0_4, negated_conjecture, (~subclass(a,c))).
+#cnf(i_0_1, plain, (subclass(a,b))).
+#cnf(i_0_2, plain, (subclass(b,c))).
+#cnf(i_0_3, plain, (subclass(X1,X2)|~subclass(X3,X2)|~subclass(X1,X3))).
+#cnf(i_0_6, plain, (subclass(X1,b)|~subclass(X1,a))).
+#cnf(i_0_5, plain, (subclass(X1,c)|~subclass(X1,b))).
+# Proof found!
+\end{lstlisting}
+E has entered many competition including ``The CADE ATP System Competition'' which is the world championship for automated theorem proving and gained many awards in different categories.
+
+\section{Problem}
+Automated theorem proving is not limited to small data sets only. Large axiom sets also exist such as the CYC dataset that tries to formalize the common sense knowledge. Usually queries against these large sets requires only a small subset of the whole set. Running multiple queries against this dataset will require re-parsing the whole dataset with every query even if the dataset is static.
