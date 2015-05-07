@@ -1,5 +1,6 @@
 ### 7/5/2015 Meeting
 - Freeing allocated arrays in functions?
+- Directory listing on windows.
 
 ### 9/4/2015 Meeting
 - TPI compatibility ?
