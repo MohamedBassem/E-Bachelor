@@ -1,4 +1,11 @@
-### 20/4/2015 Meeting
+### 7/5/2015 Meeting
+- Implementing the LOAD command and adding it to list.
+- Writing the protocol chapter in the thesis.
+
+### 30/4/2015 Meeting
+- Thesis Writing.
+
+### 23/4/2015 Meeting
 - Adding Readline support to python client and graceful connection closure.
 - Playing with the template for writing and prepairing env.
 - Writing the outline.

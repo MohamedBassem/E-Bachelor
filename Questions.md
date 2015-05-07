@@ -1,4 +1,5 @@
-### 16/4/2015 Meeting
+### 7/5/2015 Meeting
+- Freeing allocated arrays in functions?
 
 ### 9/4/2015 Meeting
 - TPI compatibility ?
