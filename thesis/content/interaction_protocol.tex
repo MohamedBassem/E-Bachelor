@@ -1,15 +1,210 @@
 \chapter{Interaction Protocol}\label{chap:interactionProtocol}
 Interaction Protocol
+\clearpage
 
-  \section{Protocol Importance}
+\section{The ADD Command}
+Parses and adds the axiom set attached with the command to the server's memory with the name <Axiom Set Name>. The axiom set added is in the unstaged mode.
+\subsection{Format}
+\begin{lstlisting}
+ADD <Axiom Set Name>
+<Axiom Set>
+GO
+\end{lstlisting}
+\subsection{Example}
+\begin{lstlisting}
+ADD axiom-set-1
+  fof(inp1,axiom,(subclass(a,b))).
+  fof(inp2,axiom,(subclass(b,c))).
+GO
+\end{lstlisting}
+\subsection{Success Codes}
+\begin{itemize}
+    \item 201 ok : added
+\end{itemize}
+\subsection{Error Codes}
+\begin{itemize}
+    \item 401 Err : axiom set name is taken
+\end{itemize}
+\clearpage
 
-  \section{Protocol Design}
-    \subsection{The ADD Command}
-    \subsection{The STAGE Command}
-    \subsection{The UNSTAGE Command}
-    \subsection{The REMOVE Command}
-    \subsection{The DOWNLOAD Command}
-    \subsection{The RUN Command}
-    \subsection{The HELP Command}
-    \subsection{The QUIT Command}
+\section{The LOAD Command}
+Parses and loads <Axiom Set Name> - from the server's axiom library specifed at startup - to the server's memory with the same name as the file name. The axiom set added is in the unstaged mode.
+\subsection{Format}
+\begin{lstlisting}
+LOAD <Axiom Set Name On disk>
+\end{lstlisting}
+\subsection{Example}
+\begin{lstlisting}
+LOAD axiom-set-1.p
+\end{lstlisting}
+\subsection{Success Codes}
+\begin{itemize}
+  \item 206 ok : LOADED
+\end{itemize}
+\subsection{Error Codes}
+\begin{itemize}
+  \item 401 Err : axiom set name is taken
+  \item 408 Err : no axioms library on server
+  \item 409 Err : cannot read server library
+\end{itemize}
+\clearpage
+
+
+\section{The STAGE Command}
+Stages an axiom set which is loaded in the memory.
+\subsection{Format}
+\begin{lstlisting}
+STAGE <Axiom Set Name>
+\end{lstlisting}
+\subsection{Example}
+\begin{lstlisting}
+STAGE axiom-set-1
+\end{lstlisting}
+\subsection{Success Codes}
+\begin{itemize}
+    \item 201 ok : staged
+\end{itemize}
+\subsection{Error Codes}
+\begin{itemize}
+    \item 404 Err : unknown axiom set
+    \item 405 Err : axiom set is alreay staged
+\end{itemize}
+\clearpage
+
+\section{The UNSTAGE Command}
+Unstages an axiom set which is loaded in the memory.
+\subsection{Format}
+\begin{lstlisting}
+UNSTAGE <Axiom Set Name>
+\end{lstlisting}
+\subsection{Example}
+\begin{lstlisting}
+UNSTAGE axiom-set-1
+\end{lstlisting}
+\subsection{Success Codes}
+\begin{itemize}
+    \item 202 ok : unstaged
+\end{itemize}
+\subsection{Error Codes}
+\begin{itemize}
+    \item 404 Err : unknown axiom set
+    \item 406 Err : axiom set is already unstaged
+\end{itemize}
+\clearpage
+
+\section{The REMOVE Command}
+Removes an axiom set from the server's memory. The axiom set must be unstaged or an error will be thrown.
+\subsection{Format}
+\begin{lstlisting}
+REMOVE <Axiom Set Name>
+\end{lstlisting}
+\subsection{Example}
+\begin{lstlisting}
+REMOVE axiom-set-1
+\end{lstlisting}
+\subsection{Success Codes}
+\begin{itemize}
+    \item 203 ok : removed
+\end{itemize}
+\subsection{Error Codes}
+\begin{itemize}
+    \item 403 ok : axiom set is staged, please unstage it first
+    \item 404 ok : unknown axiom set
+\end{itemize}
+\clearpage
+
+\section{The DOWNLOAD Command}
+Prints the raw content of the axiom set.
+\subsection{Format}
+\begin{lstlisting}
+DOWNLOAD <Axiom Set Name>
+\end{lstlisting}
+\subsection{Example}
+\begin{lstlisting}
+DOWNLOAD axiom-set-1
+\end{lstlisting}
+\subsection{Success Codes}
+\begin{itemize}
+    \item 204 ok : downloaded
+\end{itemize}
+\subsection{Error Codes}
+\begin{itemize}
+    \item 404 Err : unknown axiom set
+\end{itemize}
+\clearpage
+
+\section{The RUN Command}
+Runs a job named <Job Name> and prints the results. The job must contain a conjuncture and may add more axioms that will be removed after the job completion.
+\subsection{Format}
+\begin{lstlisting}
+RUN <Job Name>
+<Axioms and Conjuncture>
+GO
+\end{lstlisting}
+\subsection{Example}
+\begin{lstlisting}
+RUN job-1
+  fof(inp1,axiom,(subclass(a,b))).
+  fof(inp2,axiom,(subclass(b,c))).
+  fof(inp3,axiom,( (subclass(X,Y) & subclass(Y,Z)) => subclass(X,Z) )).
+  fof(inp4,conjecture,(subclass(a,c))).
+GO
+\end{lstlisting}
+\subsection{Success Codes}
+\begin{itemize}
+    \item 200 ok : success
+\end{itemize}
+\subsection{Error Codes}
+No Error Codes
+\clearpage
+
+\section{The LIST Command}
+Prints the staged, unstaged and on-disk axioms.
+\subsection{Format}
+\begin{lstlisting}
+LIST
+\end{lstlisting}
+\subsection{Example}
+\begin{lstlisting}
+LIST
+\end{lstlisting}
+\subsection{Success Codes}
+\begin{itemize}
+    \item 200 ok : success
+\end{itemize}
+\subsection{Error Codes}
+No Error Codes
+\clearpage
+
+\section{The HELP Command}
+Prints the help message.
+\subsection{Format}
+\begin{lstlisting}
+HELP
+\end{lstlisting}
+\subsection{Example}
+\begin{lstlisting}
+HELP
+\end{lstlisting}
+\subsection{Success Codes}
+No Success Codes
+\subsection{Error Codes}
+No Error Codes
+\clearpage
+
+\section{The QUIT Command}
+Disconnects from the server.
+\subsection{Format}
+\begin{lstlisting}
+QUIT
+\end{lstlisting}
+\subsection{Example}
+\begin{lstlisting}
+QUIT
+\end{lstlisting}
+\subsection{Success Codes}
+No Success Codes
+\subsection{Error Codes}
+No Error Codes
+\clearpage
 
