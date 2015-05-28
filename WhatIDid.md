@@ -1,3 +1,7 @@
+### 27/5/2015
+- Implementing e_tptp_expander
+- Expanding every command in enetcat with e_tptp_expander
+
 ### 7/5/2015 Meeting
 - Implementing the LOAD command and adding it to list.
 - Writing the protocol chapter in the thesis.
