@@ -1,6 +1,7 @@
 ### 27/5/2015
 - Implementing e_tptp_expander.
 - Expanding every command in enetcat with e_tptp_expander.
+- Writing scripts to parse the tptp problems and preparing the command file.
 - Debugging the re-add segmentation fault.
 
 ### 7/5/2015 Meeting
