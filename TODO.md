@@ -5,3 +5,4 @@
 - Finding a solution to the includes ( Rejects ).
 - Debugging re-ADD bug. ( Fixed ).
 - Testing the directory listing on windows. ( Not important ).
+- Fixing the not 0 exit on exit after staging.
