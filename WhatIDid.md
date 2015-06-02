@@ -1,3 +1,6 @@
+### 11/6/2015
+- Fixing memory leaks and seg faults.
+
 ### 28/5/2015
 - Implementing e_tptp_expander.
 - Expanding every command in enetcat with e_tptp_expander.
