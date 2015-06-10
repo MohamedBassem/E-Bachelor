@@ -27,4 +27,10 @@ If this problem was given to E, a formal proof will be presented:
 E has entered many competition including ``The CADE ATP System Competition'' which is the world championship for automated theorem proving and gained many awards in different categories.
 
 \section{Problem}
-Automated theorem proving is not limited to small data sets only. Large axiom sets also exist such as the CYC dataset that tries to formalize the common sense knowledge. Usually queries against these large sets requires only a small subset of the whole set. Running multiple queries against this dataset will require re-parsing the whole dataset with every query even if the dataset is static.
+Currently E prover is used by invoking its executable on the problem we are trying to solve. If you have multiple problems, you invoke the executable multiple times. This leaves us with two main problems.
+
+\subsection{Formal way of communication}
+The first one is that there is no formal way for communication between the prover and any tool that may use it. If you want to use the prover in your application, you will dump your problem to a file and then start a new process from within your application to run on that file. The result will be some plain text that you'll have to parse yourself. Also there's the overhead of starting a new process within your application and having to deal with the security that may be caused from running UNIX commands from your application.
+
+\subsection{Large Datasets}
+The second problem is large data sets. Automated theorem proving is not limited to small data sets only. Large axiom sets also exist such as the CYC dataset that tries to formalize the common sense knowledge. Usually those large problems have many axiom sets in common. Answering multiple queries against these sets will require re-parsing the whole axiom set with each query, not leveraging the common sets between them. Also usually queries against these large sets requires only a small subset of the whole set to find a proof so re-parsing the whole static set is clearly an overkill.
