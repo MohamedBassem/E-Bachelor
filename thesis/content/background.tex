@@ -2,7 +2,7 @@
 
 \section{Automated Theorem Proving}
 \section{E Theorem Prover}
-E is a fully automated theorem prover for full first order logic with equality. E's first public release was in 1998. It's implemented in C and works on most UNIX systems. E works by accepting a problem in the form of axioms and a conjuncture that needs to be proved and will try to find a formal proof for the conjuncture assuming the axioms. E can also provide a model that satisfies the problem. For instance, let's consider the following problem:
+E is a fully automated theorem prover for full first order logic with equality. E's first public release was in 1998. It's implemented in C and works on most UNIX systems. E works by accepting a problem in the form of axioms and a conjecture that needs to be proved and will try to find a formal proof for the conjecture assuming the axioms. E can also provide a model that satisfies the problem. For instance, let's consider the following problem:
 \begin{lstlisting}
 % Here we are defining some assumptions that a is a subclass of b and b is a subclass of c.
 fof(inp1,axiom,(subclass(a,b))).
@@ -11,8 +11,8 @@ fof(inp2,axiom,(subclass(b,c))).
 % Here we are defining that if some variable X is subclass of another one Y, and this Y is subclass of another Z then X is a subclass of Z.
 fof(inp3,axiom,((subclass(X,Y) & subclass(Y,Z)) => subclass(X,Z))).
 
-% Our conjuncture that we are trying to prove assuming the previous axioms that a is a subclass of c.
-fof(inp4,conjuncture,(subclass(a,c))).
+% Our conjecture that we are trying to prove assuming the previous axioms that a is a subclass of c.
+fof(inp4,conjecture,(subclass(a,c))).
 \end{lstlisting}
 If this problem was given to E, a formal proof will be presented:
 \begin{lstlisting}

@@ -5,7 +5,7 @@ A deduction server was proposed to solve the problem discussed in the Introducti
 Figure~\ref{fig:deductionServerArchWithoutAxiomSelector} shows the architecture of the deduction server. The deduction server can load and parse an axiom set in memory and then answer multiple quires against this axiom set.
 
 \includefigWSC{0.82}{DeductionServerArch.png}{The Deduction Server Architecture with Axiom Selector}{\cite{deductionServerTalk}}{fig:deductionServerArchWithAxiomSelector}
-The problem with that is in a huge axiom set like in the case of common sense reasoning, only a small portion of these axioms are considered in the proof. Thus a new component is needed for in the deduction server. An Axiom Selector which takes the conjuncture we need to proof and tries to find the most relevant axioms that are probably going to be used in the proof of this conjuncture. Figure~\ref{fig:deductionServerArchWithAxiomSelector}.
+The problem with that is in a huge axiom set like in the case of common sense reasoning, only a small portion of these axioms are considered in the proof. Thus a new component is needed for in the deduction server. An Axiom Selector which takes the conjecture we need to proof and tries to find the most relevant axioms that are probably going to be used in the proof of this conjecture. Figure~\ref{fig:deductionServerArchWithAxiomSelector}.
 
 \section{The Protocol}
 \subsection{TCP Communication}\label{subsec:tcpCommunication}
