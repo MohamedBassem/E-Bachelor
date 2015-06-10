@@ -1,6 +1,13 @@
 \chapter{Background}\label{chap:background}
 
+\section{First Order Logic}
 \section{Automated Theorem Proving}
+Automated theorem proving is the field using computer programs to prove mathematical theorems. Proving theorems means showing how the theorem is a logical consequence of the knowledge we have. One way to do this is a complete search from the axioms until the conjecture is reached. Although this will theoretically find an answer, this may be practically impossible due to the limited computation power. Thus many heuristics are developed to minimize the search space so that a proof could be found faster.
+
+Automated theorem proving are used in many fields in the industry. For instance, the expected performance of an electrical circuit can be formulated into a logical formula and trying to find a proof from some axioms describing the circuit itself. Other usage includes verifying the correctness of computer programs and trying to find optimizations to that program.
+
+Many automated theorem provers exist, such as E, Vampire and SPAAS. Automated theorem provers may be fully automated or may require some guidance by humans. In the next section we will talk about the fully automated theorem prover E in which this project was done.
+
 \section{E Theorem Prover}
 E is a fully automated theorem prover for full first order logic with equality. E's first public release was in 1998. It's implemented in C and works on most UNIX systems. E works by accepting a problem in the form of axioms and a conjecture that needs to be proved and will try to find a formal proof for the conjecture assuming the axioms. E can also provide a model that satisfies the problem. For instance, let's consider the following problem:
 \begin{lstlisting}
