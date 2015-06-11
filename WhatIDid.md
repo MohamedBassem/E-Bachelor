@@ -1,6 +1,8 @@
 ### 11/6/2015
 - Fixing memory leaks and seg faults.
 - Running the first benchmarks on the AGT0* set.
+- Writing the background chapter in the thesis.
+- Running the benchmarks of the ANA0* set.
 
 ### 28/5/2015
 - Implementing e_tptp_expander.
