@@ -1,10 +1,44 @@
 \chapter{Benchmarking}
 
-A set of 51 huge problems was chosen from the TPTP archive to be used for the benchmarks. Each problem contains 3,341,984 formulae. The choice of those problems was since they are having a shared huge knowledge base and each problem is just a different conjecture. The following is the list of the problem names chosen for the benchmarks.
-
-\begin{lstlisting}
-CSR025+6.p  CSR029+6.p  CSR033+6.p  CSR037+6.p  CSR041+6.p  CSR045+6.p  CSR049+6.p  CSR053+6.p  CSR057+6.p  CSR061+6.p  CSR065+6.p  CSR069+6.p  CSR073+6.p  CSR026+6.p  CSR030+6.p  CSR034+6.p  CSR038+6.p  CSR042+6.p  CSR046+6.p  CSR050+6.p  CSR054+6.p  CSR058+6.p  CSR062+6.p  CSR066+6.p  CSR070+6.p  CSR074+6.p  CSR027+6.p  CSR031+6.p  CSR035+6.p  CSR039+6.p  CSR043+6.p  CSR047+6.p  CSR051+6.p  CSR055+6.p  CSR059+6.p  CSR063+6.p  CSR067+6.p  CSR071+6.p  CSR111+6.p  CSR028+6.p  CSR032+6.p  CSR036+6.p  CSR040+6.p  CSR044+6.p  CSR048+6.p  CSR052+6.p  CSR056+6.p  CSR060+6.p  CSR064+6.p  CSR068+6.p  CSR072+6.p
-\end{lstlisting}
+A set of 51 huge problems was chosen from the TPTP archive to be used for the benchmarks. Each problem contains 3,341,984 formulae. The choice of those problems was since they are having a shared huge knowledge base and each problem is just a different conjecture. Table~\ref{Table:BenchmarkingProblems} shows the list of the problem names chosen for the benchmarks.
+\begin{table}[ht]
+  \begin{center}
+    \begin{tabular}{c|c||c|c}
+      \toprule
+      Problem Name & Number Of Formulae & Problem Name & Number Of Formulae \\
+      \midrule
+      CSR025+6.p   & 3,341,984          & CSR050+6.p   & 3,341,984 \\
+      CSR026+6.p   & 3,341,984          & CSR051+6.p   & 3,341,984 \\
+      CSR027+6.p   & 3,341,984          & CSR052+6.p   & 3,341,984 \\
+      CSR028+6.p   & 3,341,984          & CSR053+6.p   & 3,341,984 \\
+      CSR029+6.p   & 3,341,984          & CSR054+6.p   & 3,341,984 \\
+      CSR030+6.p   & 3,341,984          & CSR055+6.p   & 3,341,984 \\
+      CSR031+6.p   & 3,341,984          & CSR056+6.p   & 3,341,984 \\
+      CSR032+6.p   & 3,341,984          & CSR057+6.p   & 3,341,984 \\
+      CSR033+6.p   & 3,341,984          & CSR058+6.p   & 3,341,984 \\
+      CSR034+6.p   & 3,341,984          & CSR059+6.p   & 3,341,984 \\
+      CSR035+6.p   & 3,341,984          & CSR060+6.p   & 3,341,984 \\
+      CSR036+6.p   & 3,341,984          & CSR061+6.p   & 3,341,984 \\
+      CSR037+6.p   & 3,341,984          & CSR062+6.p   & 3,341,984 \\
+      CSR038+6.p   & 3,341,984          & CSR063+6.p   & 3,341,984 \\
+      CSR039+6.p   & 3,341,984          & CSR064+6.p   & 3,341,984 \\
+      CSR040+6.p   & 3,341,984          & CSR065+6.p   & 3,341,984 \\
+      CSR041+6.p   & 3,341,984          & CSR066+6.p   & 3,341,984 \\
+      CSR042+6.p   & 3,341,984          & CSR067+6.p   & 3,341,984 \\
+      CSR043+6.p   & 3,341,984          & CSR068+6.p   & 3,341,984 \\
+      CSR044+6.p   & 3,341,984          & CSR069+6.p   & 3,341,984 \\
+      CSR045+6.p   & 3,341,984          & CSR070+6.p   & 3,341,984 \\
+      CSR046+6.p   & 3,341,984          & CSR071+6.p   & 3,341,984 \\
+      CSR047+6.p   & 3,341,984          & CSR072+6.p   & 3,341,984 \\
+      CSR048+6.p   & 3,341,984          & CSR073+6.p   & 3,341,984 \\
+      CSR049+6.p   & 3,341,984          & CSR111+6.p   & 3,341,984 \\
+      CSR074+6.p   & 3,341,984          &              &           \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+\caption{Benchmarking Problems}
+\label{Table:BenchmarkingProblems}
+\end{table}
 
 The benchmarks were between the plain normal eprover with axioms passed to it from e\_ax\_filter which pruned the problem with a certain strategy and the server running with the single pruning strategy mode using the same strategy for a fair comparison with the normal eprover. The two of them used a memory limit of 1024MB and a 30 seconds time limit for the proof search. The benchmarks ran over the first 5, 10, 20, 30, 40 and 51 problems. The time taken for the two modes to solve all the problems in each benchmark is noted. Also the number of problems solved by the two mode is noted.
 

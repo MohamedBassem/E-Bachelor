@@ -51,38 +51,11 @@ The first four bytes \lstinline{\x00\x00\x00\x09} encodes the length of the mess
 
 \subsection{Interaction Protocol}\label{subsec:interactionProtocol}
 As we mentioned before, the communication between the server and the client is in the form of commands and responses. The formal documentation of the protocol is in the appendix. We will try to solve the problem we mentioned in section X and we will use it as an example to describe the protocol:
-\begin{lstlisting}[numbers=left]
-ADD axiom_set1
-fof(inp1,axiom,(subclass(a,b))).
-fof(inp2,axiom,(subclass(b,c))).
-GO
-
-ADD axiom_set2
-fof(inp3,axiom,((subclass(X,Y) & subclass(Y,Z)) => subclass(X,Z))).
-GO
-\end{lstlisting}
-First of all we will need to upload the axioms to the server. Using the ``ADD \ldots GO'' block we can upload axioms to the system. Axioms uploaded are parsed and stored in the memory of the server but doesn't get used into any proof yet. The server responds with the result of execution after each command.
-\begin{lstlisting}[numbers=left]
-STAGE axiom_set1
-LIST
-STAGE axiom_set2
-\end{lstlisting}
-To start making the axioms we used get into proofs we need to ``STAGE'' them. If at any time we need to check the status of the session we use the ``LIST'' command. LIST will print the axioms that are currently in the memory and whether they are staged or not.
-\begin{lstlisting}[numbers=left]
-RUN job2
-fof(inp4,conjecture,(subclass(a,c))).
-GO
-\end{lstlisting}
+\lstinputlisting[numbers=left]{codes/protocolexample1.txt}
+First of all we will need to upload the axioms to the server. Using the ``ADD \ldots GO'' block we can upload axioms to the system. Axioms uploaded are parsed and stored in the memory of the server but don't get used into any proof yet. The server responds with the result of execution after each command.
+\lstinputlisting[numbers=left]{codes/protocolexample2.txt}
+To start making the axioms we used get into proofs we need to ``STAGE'' them. If at any time we need to check the status of the session we use the ``LIST'' command. LIST will print the axioms that are currently in the memory and whether they are staged or not and also server-side axiom sets. Server-side axiom sets can also be loaded into the server's memory using the ``LOAD'' command.
+\lstinputlisting[numbers=left]{codes/protocolexample3.txt}
 Now after staging the needed axioms we can start running the job with ``RUN \ldots GO'' block. Axioms introduced in the RUN command block are used temporally in this job and then discarded after the termination of the job.
-\begin{lstlisting}[numbers=left]
-UNSTAGE axiom_set2
-REMOVE axiom_set2
-DOWNLOAD axiom_set1
-
-RUN job2
-fof(inp4,conjecture,(subclass(a,c))).
-GO
-\end{lstlisting}
-Axiom sets can also be ``UNSTAGE''d or ``REMOVE''d completely from the system. Since sessions can be running for long time, you can check the content of any axiom set using the ``DOWNLOAD'' command. In the last set of commands we try to remove one of the axiom sets and re-run the job. We will notice that a proof won't be found.
-
-Also the server can be started with some axiom sets on the server side to be accessed by the client using the ``LOAD'' command.
+\lstinputlisting[numbers=left]{codes/protocolexample4.txt}
+Axiom sets can also be ``UNSTAGE''d or ``REMOVE''d completely from the system. Since sessions can be running for long time, you can check the content of any axiom set using the ``DOWNLOAD'' command. In the last set of commands we try to remove one of the axiom sets and re-run the job. We will notice that a proof won't be found. Notice that the second job run didn't need to state anything about the axioms to be used in the proof, they are already staged and ready-to-use in the server's memory.
