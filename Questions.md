@@ -1,3 +1,6 @@
+### 25/6/2015 Meeting
+- Difference between TSTP and TPTP ? Scanner running out of memory ?
+
 ### 7/5/2015 Meeting
 - Freeing allocated arrays in functions?
 - Directory listing on windows.
