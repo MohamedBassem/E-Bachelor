@@ -1,8 +1,14 @@
 \chapter{Introduction}
 \label{chap:intro}
 
-\section{Section Name} \label{sec:s1}
-Some sample text with an \ac{ac}, some citation \cite{deductionServerTalk}, and some more \ac{ac2}.
+Automated theorem provers have been traditionally used for solving mathematical problems, checking the correctness of existing proofs, or analysis of different theorem proving strategies. Recently, large theories have been developed \ldots\ldots\ldots\ldots
 
-\section{Another Section}
-Reference to Section \ref{sec:s1}, and reuse of \ac{ac} nad \ac{ac2} with also full use of \acf{ac2}.
+In those large datasets, theorem provers proves many queries against those datasets which are mostly static. Those datasets usually contain thousands to million axioms in which small subset of these axioms is used in the proof. Parsing these problems takes up to several minutes and the exact same parsing is done for each query which shows some room for improvement.
+
+In the following chapters, we will introduce and approach to solve this problem. A deduction, over a flexible knowledge base, offered as a network service. Users connect to this server, upload axiom sets to the server, manage those sets, load datasets from the server, and ask the server to prove some queries. The server indexes the uploaded sets for further use. When the user asks the server for a proof, the server uses the pre-indexed sets along with the new axioms uploaded by the user and runs multiple instances in parallel to prune the dataset and find the proof. Whenever one of the instances finds a proof, other instances are stopped and results are returned back to the user.
+
+This approach has many advantages. First, the cost of loading, parsing, and preprocessing the axiom sets is amortized across multiple proofs. Also, having this service offered as a network service, users can connect and use this service remotely from their local machines without going into the hassle of installing those provers on their machines. Other than installing the provers, the service can be hosted on a much powerful servers than the user's local machine giving him a larger computational power.
+
+The deduction server is implemented in C and integrated with the theorem prover E\cite{Schulz:AICOM-2002,Schulz:LPAR-2013}. Previously, invoking E to find proofs used to be done by starting E process and configuring it using the command line arguments. There wasn't any formal way to interact with the prover. A formal communication protocol have been developed making it much easier to issue commands to the prover also without the overhead of starting new process with each proof.
+
+Benchmarks showed a huge improvement in the runtime of the proof runs, which shows the feasibility of the approach. The following chapter will provide the needed knowledge to understand the rest of the page. The third chapter shows the detailed architecture of the deduction server and its client. The fourth chapter shows the benchmarks done and its results. The last two chapter discuss the conclusion and the future work that can be done.
