@@ -12,4 +12,9 @@ DOWNLOAD axiom_set1
 RUN job2
 fof(inp4,conjecture,(subclass(a,c))).
 GO
-> .. Proof output truncated ..
+# Processing started for job2
+# SZS status GaveUp for job2
+
+# Processing finished for job2
+
+200 ok : success
