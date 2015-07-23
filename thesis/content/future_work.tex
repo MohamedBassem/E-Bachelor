@@ -2,12 +2,18 @@
 \label{chap:todo}
 
 \section{Deduction As a Service}
+
 \subsection{Controlling Client Resources}
+The deduction server currently supports multiple user sessions connecting at the same time. A single user can exhaust the server's resources preventing other users from a fully performing server. For a better user experience, the available resources, such as CPU time and memory, for a certain user should be controlled.
+
 \subsection{Clustering and Load Balancing}
+Proof search is a very CPU and memory extensive process. The deduction server should be scalable to be able to serve multiple clients concurrently. One of the ideas to achieve this is to have a cluster of worker server. One or more servers, behind a load balancer, listen to connections, accept user commands, and then schedule jobs distributively among those workers. A better, but more expensive approach, is to offload user sessions to dedicated machines.
+
 
 \section{Other Work}
-\subsection{Supporting Other Languages}
-The current implementation of the deduction server accepts only TPTP language.
+\subsection{Supporting Other Backends}
+The current implementation of the deduction server invokes E as the proving system backend. Making the system prover agnostic will allow different provers to plugged in with the server in front of them. The server can also start different provers will attempting to solve the problem which will yield in an overall performance gain. Also, supporting different pruning systems means that we can have the same interface for interacting with multiple systems.
+
 \subsection{Supporting Other Axiom Pruning Techniques}
 The current implementation of the deduction server supports only SinE as the only pruning technique due to the ease of staging and unstaging axiom sets from the algorithm. Staging axiom sets in SinE algorithm is adding their symbol frequency to the distribution and vice versa. Supporting other pruning techniques would be a powerful addition to the deduction server with challenge of finding a way to easily stage and unstage axiom sets.
 
