@@ -1,6 +1,6 @@
 \chapter{Architecture}
 
-As mentioned in the background section, one of the problems is that if we have a static dataset and we need to answer multiple queries against this set, we will need to re-parse the whole dataset with each query. The problem here is that there is no persistence. Each job runs separately from the other one as shown in Figure X. If we mange to keep the parsed set in the memory for other jobs to use, it will solve most of the problems.
+As mentioned in the background section, one of the problems is that if we have a static dataset and we need to answer multiple queries against this set, we will need to re-parse the whole dataset with each query. The problem here is that there is no persistence. Each job runs separately from the other one. If we mange to keep the parsed set in the memory for other jobs to use, it will solve most of the problems.
 
 To solve this problem we need to have the concept of sessions. Each session contains a previously parsed axiom set --- for example --- and in the session you can query this dataset multiple times. To handle all of those sessions we need a server, so we decided to go with the server-client architecture to solve this problem. In the server-client architecture, we have one or more servers and clients connect to these servers and have their own separate sessions.
 
@@ -41,7 +41,6 @@ Currently, the pruner uses SinE to produce a smaller problem that is then passed
 \section{Communication}
 \subsection{TCP Communication}\label{subsec:tcpCommunication}
 The communication with the server is done over TCP to insure reliability. Session is created by creating a TCP connection with the server on a certain port. The session lives as long as the TCP connection is open. A child process from the server is forked to server this client. Commands are a series of TCP messages that follows a certain format. Each line should be in a separate TCP message and must be encoded in the following format:
-\missingfigure[figwidth=6cm]{A Figure showing the TCP message structure.}
 
 As an example, to send the message ``LIST\textbackslash{}n'' the raw TCP message would be:
 \begin{lstlisting}

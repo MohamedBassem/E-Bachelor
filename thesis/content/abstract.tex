@@ -1,4 +1,10 @@
-\chapter*{Abstract}
-% \addcontentsline{toc}{chapter}{Abstract}
-\label{chap:abstract}
-Abstact
+\chapter*{Abstract} 
+% \addcontentsline{toc}{chapter}{Abstract} 
+\label{chap:abstract} 
+ 
+We describe a system offering deduction (over a fixed but flexible background theory) as a service, provided to a client via a network connection. The deduction server maintains the (potentially) large background knowledge base in a form that makes processing of individual conjectures and queries easy and avoids most of the overhead of reading and analyzing large background theories for each individual job. The client connects to the server, can update the background theory by adding and removing client-side or server-side axiom sets, and ask the server to solve proof problems on its behalf. 
+ 
+This offers several benefits: Preprocessing costs can be amortized over multiple proof attempts. The user can be isolated from the complexities of a locally installed ATP system (and indeed locally maintained knowledge bases). Finally, the deduction server can easily offer true strategy parallelism even with sequential back-end theorem provers. 
+ 
+This paper describes the architecture, the communication protocol, and the implementation of a deduction server based on E. First experimental results demonstrate the feasibility of the technology and the performance benefits possible with this approach. 
+ 
