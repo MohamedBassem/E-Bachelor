@@ -3,6 +3,7 @@
 \usetheme{m}
 
 \usepackage{booktabs}
+\usepackage{animate}
 \usepackage[scale=2]{ccicons}
 
 \title{Deduction as a Service}
@@ -42,7 +43,6 @@
   \frametitle{Large Axiom Sets}
 \end{frame}
 
-
 \section{Problem}
 \begin{frame}[fragile]
   \frametitle{Problem}
@@ -77,17 +77,41 @@
     \begin{figure} \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{imgs/TheDeductionServer.png} \end{figure}
 \end{frame}
 
-
 \begin{frame}[fragile]
   \frametitle{Deduction Server: Interaction Protocol}
 \end{frame}
 
 \section{Benchmarking}
 \begin{frame}[fragile]
+  \frametitle{Benchmarking}
+  \begin{itemize}[<+- | alert@+>]
+    \item Tests were performed on a virtualized server with 4 2.6 GHz Intel CPUs with 8 threads
+    \item Chosen TPTP Problems:
+      \begin{itemize}
+        \item 51 Problems
+        \item 479 Megabytes on disk
+        \item 3,341,984 Formulae
+      \end{itemize}
+    \item Test Setup:
+      \begin{itemize}
+        \item The deduction server ran in the single strategy mode using the same strategy as the plain eprover
+        \item Time Limit: 30 Seconds
+        \item Memory Limit: 1024 MB
+      \end{itemize}
+    \item Time was recorded after 5, 10, 20, 30, 40 and all 51 problems
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Results}
+\begin{figure} \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{imgs/BenchmarkingResults.png} \end{figure}
 \end{frame}
 
 \section{Future Work}
 \begin{frame}[fragile]
+  \frametitle{Future Work}
+  %\animategraphics[controls]{1}{imgs/demo/image}{0}{32}
 \end{frame}
 
 \section{Conclusion}
