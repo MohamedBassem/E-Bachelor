@@ -41,19 +41,24 @@
 \section{Large Axiom Sets}
 \begin{frame}[fragile]
   \frametitle{Large Axiom Sets}
+  \begin{itemize}
+    \item OpenCYC library tries to collect the human's common sense knowledge into a comprehensive library with the aim of allowing AI applications to perfom human-like reasoning\cite{wiki:OpenCYC}
+      \item Up to 500MB of data and millions of axioms
+      \item Other huge axiom sets are extracted from libraries such as SUMO and MIZAR
+  \end{itemize}
 \end{frame}
 
 \section{Problem}
 \begin{frame}[fragile]
   \frametitle{Problem}
-  Running multiple queries against the same knowledge base requires re-parsing the whole set
+  Usually queries only reRunning multiple queries against the same knowledge base requires re-parsing the whole set
 \begin{figure} \includegraphics[width=\linewidth,height=0.8\textheight,keepaspectratio]{imgs/OldDeductionFC.png} \end{figure}
 \end{frame}
 
 
 \begin{frame}[fragile]
   \frametitle{Problem}
-  No formal way of communicating with E other than invoking the executable
+  No formal way of communicating with E
 \end{frame}
 
 \section{Deduction Server}
@@ -81,7 +86,7 @@
   \frametitle{Deduction Server: Interaction Protocol}
 \end{frame}
 
-\section{Benchmarking}
+\section{Results}
 \begin{frame}[fragile]
   \frametitle{Benchmarking}
   \begin{itemize}[<+- | alert@+>]
@@ -104,14 +109,32 @@
 
 
 \begin{frame}[fragile]
-  \frametitle{Results}
+  \frametitle{Benchmarking}
 \begin{figure} \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{imgs/BenchmarkingResults.png} \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Deduction as a Service}
+  \begin{itemize}[<+- | alert@+>]
+    \item Having a hosted deduction server will allow users to connect to the remote server and have their own sessions
+    \item A win for:
+      \begin{itemize}
+          \item Users who cannot install the prover due to compatiblity issues
+          \item Users who have limited resources
+      \end{itemize}
+  \end{itemize}
+
 \end{frame}
 
 \section{Future Work}
 \begin{frame}[fragile]
   \frametitle{Future Work}
-  %\animategraphics[controls]{1}{imgs/demo/image}{0}{32}
+  \begin{itemize}[<+- | alert@+>]
+    \item Controlling client allowed resource
+    \item Clustering and load balancing
+    \item Supporting other backends
+    \item Supporting other pruning techniques
+  \end{itemize}
 \end{frame}
 
 \section{Conclusion}
@@ -125,7 +148,7 @@
 
   \frametitle{References}
 
-  \bibliography{demo}
+  \bibliography{presentation}
   \bibliographystyle{abbrv}
 
 \end{frame}
