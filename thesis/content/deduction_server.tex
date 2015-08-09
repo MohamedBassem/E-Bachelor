@@ -28,7 +28,7 @@ Having different implementations of the client in different programming language
 \section{Pruning}
 As we mentioned before, the server can be used as a pre-indexed ready-to-use library of axioms. But this doesn't do any good to the proof search, thousand and even millions of axioms can be in the server's memory at any time. Answering a query with those axioms staged in the memory will yield a very large search space even if the query only needs a small subset of these axioms.
 
-We need a component in our server that will select a subset of the axioms in the memory that are most probably relevant in the proof of this query. This process is called pruning. The new component will run on the knowledge base given the conjecture to filter irrelevant axioms and passing the resulted filtered axioms to the eprover to find the proof as shown in figure~\ref{fig:Pruning}.
+We need a component in our server that will select a subset of the axioms in the memory that are most probably relevant in the proof of this query. This process is called pruning. The new component will run on the knowledge base given the conjecture to filter irrelevant axioms and passing the resulted filtered axioms to the E prover to find the proof as shown in figure~\ref{fig:Pruning}.
 
 \includefig{0.82}{Pruner.png}{Pruning}{fig:Pruning}
 
