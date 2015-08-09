@@ -1,6 +1,6 @@
 \chapter{Benchmarking}
 
-A set of 51 huge problems was chosen from the TPTP archive to be used for the benchmarks. Each problem contains 3,341,984 formulae. The choice of those problems was since they are having a shared huge knowledge base and each problem is just a different conjecture. Table~\ref{Table:BenchmarkingProblems} shows the list of the problem names chosen for the benchmarks.
+A set of 51 huge problems was chosen from the \ac{tptp} archive to be used for the benchmarks. Each problem contains 3,341,984 formulae. The choice of those problems was because they have a huge shared knowledge base and each problem is just a different conjecture. Table~\ref{Table:BenchmarkingProblems} shows the list of the problem names chosen for the benchmarks.
 \begin{table}[ht]
   \begin{center}
     \begin{tabular}{c|c||c|c}
@@ -40,7 +40,7 @@ A set of 51 huge problems was chosen from the TPTP archive to be used for the be
 \label{Table:BenchmarkingProblems}
 \end{table}
 
-The benchmarks were between the plain normal eprover with axioms passed to it from e\_ax\_filter which pruned the problem with a certain strategy and the server running with the single pruning strategy mode using the same strategy for a fair comparison with the normal eprover. The two of them used a memory limit of 1024MB and a 30 seconds time limit for the proof search. The benchmarks ran over the first 5, 10, 20, 30, 40 and 51 problems. The time taken for the two modes to solve all the problems in each benchmark is noted. Also the number of problems solved by the two mode is noted.
+The benchmarks were between the plain normal eprover and the server running in a single strategy mode. The axioms are passed to the axiom filter before passing it to the plain E prover. The server used the same strategy that was used in the axiom filter for a fair comparison with the plain prover. The two of them used a memory limit of 1024MB and a 30 seconds time limit for the proof search. The benchmarks ran over the first 5, 10, 20, 30, 40 and 51 problems. The time taken for the two modes to solve all the problems in each benchmark is noted. Also the number of problems solved by the two mode is noted.
 
 \begin{figure}[ht!]
   \centering
@@ -49,3 +49,5 @@ The benchmarks were between the plain normal eprover with axioms passed to it fr
 \end{figure}
 
 The results in Figure~\ref{benchmarking_results} shows a huge difference between the single strategy server mode and the normal eprover. That is because parsing the huge knowledge base takes large amount of time which is done in the normal eprover once for each problem. In the single strategy server mode the huge axiom set is parsed only once and kept in the server's memory and multiple queries ran against this axiom set. Therefor the per-processing time of each problem in the single strategy server mode is amortized over multiple runs.
+
+Both modes solved the same 41 problems out of the 51 problems used in the benchmarks. This means that the server mode has a performance advantage over the plain E prover without affecting its efficiency.

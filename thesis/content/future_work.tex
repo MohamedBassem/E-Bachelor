@@ -4,10 +4,10 @@
 \section{Deduction As a Service}
 
 \subsection{Controlling Client Resources}
-The deduction server currently supports multiple user sessions connecting at the same time. A single user can exhaust the server's resources preventing other users from a fully performing server. For a better user experience, the available resources, such as CPU time and memory, for a certain user should be controlled.
+The deduction server currently supports multiple user sessions connecting at the same time. A single user can exhaust the server's resources preventing other users from a fully performing server. For a better user experience, the available resources, such as \ac{cpu} time and memory, for a certain user should be controlled.
 
 \subsection{Clustering and Load Balancing}
-Proof search is a very CPU and memory extensive process. The deduction server should be scalable to be able to serve multiple clients concurrently. One of the ideas to achieve this is to have a cluster of worker server. One or more servers, behind a load balancer, listen to connections, accept user commands, and then schedule jobs distributively among those workers. A better, but more expensive approach, is to offload user sessions to dedicated machines.
+Proof search is a very \ac{cpu} and memory extensive process. The deduction server should be scalable to be able to serve multiple clients concurrently. One of the ideas to achieve this is to have a cluster of worker server. One or more servers, behind a load balancer, listen to connections, accept user commands, and then schedule jobs distributively among those workers. A better, but more expensive approach, is to offload user sessions to dedicated machines.
 
 
 \section{Other Work}

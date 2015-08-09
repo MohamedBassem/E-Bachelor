@@ -6,22 +6,22 @@ To solve this problem we need to have the concept of sessions. Each session cont
 
 \section{Server-Client Architecture}
 \subsection{Server Design}
-The deduction server is written in C and integrated with E but runs as a separate executable. The server starts by listening to a certain port for incoming TCP connections. Whenever a client tries to connect to the server on that port a process is forked from the main process to serve the client. The server can handle many connections at the same time and each client is completely isolated from other clients connected to the server.
+The deduction server is written in C and integrated with E but runs as a separate executable. The server starts by listening to a certain port for incoming \ac{tcp} connections. Whenever a client tries to connect to the server on that port a process is forked from the main process to serve the client. The server can handle many connections at the same time and each client is completely isolated from other clients connected to the server.
 
 The client can then start interacting with the server using a pre-defined protocol. Using the protocol the client can upload axiom sets, remove them and query the server for proofs. Whenever the client uploads some set of axioms, the server parses, indexes and keep those axioms into its memory. 
 
 After the client chooses some axiom sets to be used in the proof search, he can start querying the server. The query consists of some optional additional axioms that will be discarded when the job finished, and a conjecture. The server adds the new axioms to the knowledge base and passes the whole dataset to an E instance to solve the problem. The architecture is shown in Figure~\ref{fig:TheDeductionServerWithoutPruneAndStage}.
 
-\includefig{0.82}{TheDeductionServerWithoutPruneAndStage.png}{}{fig:TheDeductionServerWithoutPruneAndStage}
+\includefig{0.82}{TheDeductionServerWithoutPruneAndStage.png}{Server Architecture}{fig:TheDeductionServerWithoutPruneAndStage}
 
-One more feature, that is added to server, is the ability to choose which axiom sets to consider in your proof. We called this feature staging. You could have many axiom sets in the server's memory but only those who are staged will be considered when finding a proof. By this the server can be used as a pre-indexed, ready-to-use library of knowledge bases. The server also offers pre-uploaded sets of axioms that the client can use directly. The current architecture is shown in Figure~\ref{fig:TheDeductionServerWithoutPrune}.
+One more feature, that is added to server, is the ability to choose which axiom sets to consider in your proof. We called this feature staging. You could have many axiom sets in the server's memory but only those who are staged will be considered when finding a proof. By this the server can be used as a pre-indexed, ready-to-use library of knowledge bases. The server also offers pre-uploaded sets of axioms that the client can use directly. This architecture is shown in Figure~\ref{fig:TheDeductionServerWithoutPrune}.
 
-\includefig{0.82}{TheDeductionServerWithoutPrune.png}{}{fig:TheDeductionServerWithoutPrune}
+\includefig{0.82}{TheDeductionServerWithoutPrune.png}{Server Architecture with Staging}{fig:TheDeductionServerWithoutPrune}
 
 \subsection{Client Design}
-The E distribution comes also with a python client called ``enetcat.py'' which can be used to interact with the server. The client is meant to be a reference implementation so that the client can be ported into other languages. The client takes the address and the port of the deduction server as arguments and starts a TCP connection with it. The python clients reads the user's commands from ``stdin'' and prints the output back to ``stdout''.
+The E distribution comes also with a python client called ``enetcat.py'' which can be used to interact with the server. The client is meant to be a reference implementation so that the client can be ported into other languages. The client takes the address and the port of the deduction server as arguments and starts a \ac{tcp} connection with it. The python clients reads the user's commands from ``stdin'' and prints the output back to ``stdout''.
 
-The client has two main parts that differs it from a normal telnet session. The first one is that the TCP messages exchanged with between the server and the client are encoded in a certain format. It's the python clients responsibility to encode outgoing messages into this format and decode incoming messages from this format. Usually axiom set files includes other file within them. The client expands those includes recursively into their content, so that the server receives axiom sets free of includes.
+The client has two main parts that differs it from a normal telnet session. The first one is that the \ac{tcp} messages exchanged with between the server and the client are encoded in a certain format. It's the python clients responsibility to encode outgoing messages into this format and decode incoming messages from this format. Usually axiom set files includes other file within them. The client expands those includes recursively into their content, so that the server receives axiom sets free of includes.
 
 Having different implementations of the client in different programming languages makes it easier for complex systems to integrate with automated theorem provers and use them as a service. By just including the library, those systems don't need to have the ATP installed on their machines and don't need to care about the memory or the computation power needed for the proofs as proving conjectures is the server's responsibility.
 
@@ -34,24 +34,24 @@ We need a component in our server that will select a subset of the axioms in the
 
 Currently the server supports only pruning by SinE. SinE works by calculating the frequency count of symbols in the axioms and then running the pruning algorithm after that. This works nicely with the server as staging and unstaging axioms is as easy as adding their frequency counts to the frequency table and removing them respectively.
 
-Currently, the pruner uses SinE to produce a smaller problem that is then passed to E. This architecture works, but is not fully utilizing the server's resources. Instead of trying to solve one problem, we can run the pruner with different params to get several different smaller problems. Each one of those problems is passed to E instances, running in parallel. Whenever E finds a solution to one of the problems, all the other instances are killed and the solution is returned back to the user. So the final server structure is the one shown in figure~\ref{fig:TheFinalDeductionServer}.
+The pruner produces smaller problems that is then passed to E. This architecture works, but is not fully utilizing the server's resources. Instead of trying to solve one problem, we can run the pruner with different parameters to get several different smaller problems. Each one of those problems is passed to E instances, running in parallel. Whenever an E instance finds a solution to one of the problems, all the other instances are killed and the solution is returned back to the user. So the final server structure is the one shown in figure~\ref{fig:TheFinalDeductionServer}.
 
 \includefig{0.82}{TheDeductionServer.png}{The Final Deduction Server Architecture}{fig:TheFinalDeductionServer}
 
 \section{Communication}
 \subsection{TCP Communication}\label{subsec:tcpCommunication}
-The communication with the server is done over TCP to insure reliability. Session is created by creating a TCP connection with the server on a certain port. The session lives as long as the TCP connection is open. A child process from the server is forked to server this client. Commands are a series of TCP messages that follows a certain format. Each line should be in a separate TCP message and must be encoded in the following format:
+The communication with the server is done over \ac{tcp} to insure reliability. Session is created by initiating a \ac{tcp} connection with the server on a certain port. The session lives as long as the \ac{tcp} connection is open. A child process from the server is forked to server this client. Commands are a series of \ac{tcp} messages that follows a certain format. Each line should be in a separate \ac{tcp} message and must be encoded in the following format:
 
-As an example, to send the message ``LIST\textbackslash{}n'' the raw TCP message would be:
+As an example, to send the message ``LIST\textbackslash{}n'' the raw \ac{tcp} message would be:
 \begin{lstlisting}
   \x00\x00\x00\x09 \x4c\x49\x53\x54\x0a
 \end{lstlisting}
-The first four bytes \lstinline{\x00\x00\x00\x09} encodes the length of the message which is 9 bytes. Then 9--4 bytes follows \lstinline{\x4c\x49\x53\x54\x0a} which are the actual content of the message. Sticking to the protocol new lines are important to the server and each line should be terminated with a new line. Server responses are encoded in the same way.
+The first four bytes \lstinline{\x00\x00\x00\x09} encodes the length of the message which is 9 bytes. Then (9--4) bytes follows \lstinline{\x4c\x49\x53\x54\x0a} which are the actual content of the message. Sticking to the protocol new lines are important to the server and each line should be terminated with a new line. Server responses are encoded in the same way.
 
 \subsection{Interaction Protocol}\label{subsec:interactionProtocol}
 As we mentioned before, the communication between the server and the client is in the form of commands and responses. The formal documentation of the protocol is in the appendix. We will try to solve the problem we mentioned in section X and we will use it as an example to describe the protocol:
 \lstinputlisting[numbers=left]{codes/protocolexample1.txt}
-First of all we will need to upload the axioms to the server. Using the ``ADD \ldots GO'' block we can upload axioms to the system. Axioms uploaded are parsed and stored in the memory of the server but don't get used into any proof yet. The server responds with the result of execution after each command.
+First of all, we will need to upload the axioms to the server. Using the ``ADD \ldots GO'' block we can upload axioms to the system. Axioms uploaded are parsed and stored in the memory of the server but don't get used into any proof yet. The server responds with the result of execution after each command.
 \lstinputlisting[numbers=left]{codes/protocolexample2.txt}
 To start making the axioms we used get into proofs we need to ``STAGE'' them. If at any time we need to check the status of the session we use the ``LIST'' command. LIST will print the axioms that are currently in the memory and whether they are staged or not and also server-side axiom sets. Server-side axiom sets can also be loaded into the server's memory using the ``LOAD'' command.
 \lstinputlisting[numbers=left]{codes/protocolexample3.txt}
