@@ -12,7 +12,7 @@ Proof search is a very \ac{cpu} and memory extensive process. The deduction serv
 
 \section{Other Work}
 \subsection{Supporting Other Backends}
-The current implementation of the deduction server invokes E as the proving system backend. Making the system prover agnostic will allow different provers to plugged in with the server in front of them. The server can also start different provers will attempting to solve the problem which will yield in an overall performance gain. Also, supporting different pruning systems means that we can have the same interface for interacting with multiple systems.
+The current implementation of the deduction server invokes E as the proving system backend. Making the system prover agnostic will allow different provers to plugged in with the server in front of them. The server can also start different provers while attempting to solve the problem which will yield in an overall performance gain. Moreover, supporting different pruning systems means that we can have the same interface for interacting with multiple systems.
 
 \subsection{Supporting Other Axiom Pruning Techniques}
 The current implementation of the deduction server supports only SinE as the only pruning technique due to the ease of staging and unstaging axiom sets from the algorithm. Staging axiom sets in SinE algorithm is adding their symbol frequency to the distribution and vice versa. Supporting other pruning techniques would be a powerful addition to the deduction server with challenge of finding a way to easily stage and unstage axiom sets.

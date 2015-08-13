@@ -1,14 +1,14 @@
 \chapter{Background}\label{chap:background}
 
 \section{Automated Theorem Proving}
-Automated theorem proving is the field of using computer programs to prove mathematical theorems. Proving theorems means showing how the theorem is a logical consequence of the knowledge we have. One way to do this is a complete search from the axioms until the conjecture is reached. Although this will theoretically find an answer, this may be practically impossible due to the limited computation power. Thus many heuristics are developed to minimize the search space so that a proof could be found faster.
+Automated theorem proving is the field of using computer programs to prove mathematical theorems. Proving theorems means showing how the theorem is a logical consequence of the knowledge we have. One way to do this is a complete search from the axioms until the conjecture is reached. Although this will theoretically find an answer, this may be practically impossible due to the limited computation power. Thus, many heuristics are developed to minimize the search space so that a proof could be found faster.
 
-Automated theorem proving are used in many fields in the industry. For instance, the expected performance of an electrical circuit can be formulated into a logical formula and trying to find a proof from some axioms describing the circuit itself. Other usage includes verifying the correctness of computer programs and trying to find optimizations to that program.
+Automated theorem proving is used in many fields in the industry. For instance, the expected performance of an electrical circuit can be formulated into a logical formula, then the correctness of the circut can be checked by trying to find a proof from some axioms describing the circuit itself. Other usage includes verifying the correctness of computer programs and trying to find optimizations to that program.
 
-Many automated theorem provers exist, such as E, Vampire and SPAAS. Automated theorem provers may be fully automated or may require some guidance by humans. In the next section we will talk about the fully automated theorem prover E in which this project was done.
+Many automated theorem provers exist, such as E, Vampire and SPAAS. Automated theorem provers may be fully automated or may require some guidance by humans. The next section talks about the fully automated theorem prover E in which this project was done.
 
 \section{E Theorem Prover}
-E is a fully automated theorem prover for full first order logic with equality. E's first public release was in 1998. It's implemented in C and works on most UNIX systems. E works by accepting a problem in the form of axioms and a conjecture that needs to be proved and will try to find a formal proof for the conjecture assuming the axioms. E can also provide a model that satisfies the problem. For instance, let's consider the following problem:
+E is a fully automated theorem prover for full first order logic with equality. E's first public release was in 1998. It is implemented in C and works on most UNIX systems. E works by accepting a problem in the form of axioms and a conjecture that needs to be proven and will try to find a formal proof for the conjecture assuming the axioms. E can also provide a model that satisfies the problem. For instance, let's consider the following problem:
 \begin{lstlisting}
 % Here we are defining some assumptions that a is a subclass of b and b is a subclass of c.
 fof(inp1,axiom,(subclass(a,b))).
@@ -17,10 +17,10 @@ fof(inp2,axiom,(subclass(b,c))).
 % Here we are defining that if some variable X is subclass of another one Y, and this Y is subclass of another Z then X is a subclass of Z.
 fof(inp3,axiom,((subclass(X,Y) & subclass(Y,Z)) => subclass(X,Z))).
 
-% Our conjecture that we are trying to prove assuming the previous axioms that a is a subclass of c.
+% The conjecture that we are trying to prove assuming the previous axioms that a is a subclass of c.
 fof(inp4,conjecture,(subclass(a,c))).
 \end{lstlisting}
-If this problem was given to E, a formal proof will be presented:
+If this problem was given to E, a formal proof will be presented as follows:
 \begin{lstlisting}
 #cnf(i_0_4, negated_conjecture, (~subclass(a,c))).
 #cnf(i_0_1, plain, (subclass(a,b))).
@@ -30,13 +30,13 @@ If this problem was given to E, a formal proof will be presented:
 #cnf(i_0_5, plain, (subclass(X1,c)|~subclass(X1,b))).
 # Proof found!
 \end{lstlisting}
-E has entered many competition including ``The CADE ATP System Competition'' which is the world championship for automated theorem proving and gained many awards in different categories.
+E has entered many competitions including ``The CADE ATP System Competition'' which is the world championship for automated theorem proving and gained many awards in different categories.
 
 \section{Problem}
 Currently E prover is used by invoking its executable on the problem we are trying to solve. If you have multiple problems, you invoke the executable multiple times. This leaves us with two main problems.
 
 \subsection{Formal way of communication}
-The first one is that there is no formal way for communication between the prover and any tool that may use it. If you want to use the prover in your application, you will dump your problem to a file and then start a new process from within your application to run on that file. The result will be some plain text that you'll have to parse yourself. Also there's the overhead of starting a new process within your application and having to deal with the security that may be caused from running UNIX commands from your application.
+The first problem is that there is no formal way of communication between the prover and any tool that may use it. If the prover should be used in an application, the problem should be dumped to a file and a new process should be started from within the application to run on that file. The result will be some plain text that needs to be parsed. In addition to that there is the overhead of starting a new process within the application and having to deal with the security issues that may arise from running UNIX commands from within application.
 
 \subsection{Large Datasets}
-The second problem is large data sets. Automated theorem proving is not limited to small data sets only. Large axiom sets also exist such as the CYC dataset that tries to formalize the common sense knowledge. Usually those large problems have many axiom sets in common. Answering multiple queries against these sets will require re-parsing the whole axiom set with each query, not leveraging the common sets between them. Also usually queries against these large sets requires only a small subset of the whole set to find a proof so re-parsing the whole static set is clearly an overkill.
+The second problem is large data sets. Automated theorem proving is not limited to small data sets only. Large axiom sets also exist such as the CYC dataset that tries to formalize the common sense knowledge. Usually those large problems have many axiom sets in common. Answering multiple queries against these sets will require re-parsing the whole axiom set with each query, not leveraging the common sets between them. Moreover, queries against these large sets usually require only a small subset of the whole set to find a proof. So, re-parsing the whole static set is clearly an overkill.
