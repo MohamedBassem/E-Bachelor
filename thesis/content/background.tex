@@ -7,7 +7,7 @@ Automated theorem proving is used in many fields in the industry. For instance, 
 
 Many automated theorem provers exist, such as E, Vampire and SPAAS. Automated theorem provers may be fully automated or may require some guidance by humans. The next section talks about the fully automated theorem prover E in which this project was done.
 
-\section{E Theorem Prover}
+\section{E Theorem Prover}\label{sec:eprover}
 E is a fully automated theorem prover for full first order logic with equality. E's first public release was in 1998. It is implemented in C and works on most UNIX systems. E works by accepting a problem in the form of axioms and a conjecture that needs to be proven and will try to find a formal proof for the conjecture assuming the axioms. E can also provide a model that satisfies the problem. For instance, let's consider the following problem:
 \begin{lstlisting}
 % Here we are defining some assumptions that a is a subclass of b and b is a subclass of c.
